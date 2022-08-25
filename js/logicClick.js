@@ -1,3 +1,8 @@
+import { ancientLogic } from "./algorithm.js";
+import { diffLogic } from "./algorithm.js";
+import { fullStackArr } from "./algorithm.js";
+
+
 const changeAnc12 = document.querySelector('.ancient-Cthulthu');
 const changeAnc13 = document.querySelector('.ancient-ShubNiggurath');
 const changeAnc14 = document.querySelector('.ancient-IogSothoth');
@@ -14,9 +19,21 @@ const diff2 = document.querySelector('.diff-2');
 const diff3 = document.querySelector('.diff-3');
 const diff4 = document.querySelector('.diff-4');
 
+const green1 = document.querySelector('.green-1');
+const green2 = document.querySelector('.green-2');
+const green3 = document.querySelector('.green-3');
+const blue1 = document.querySelector('.blue-1');
+const blue2 = document.querySelector('.blue-2');
+const blue3 = document.querySelector('.blue-3');
+const brown1 = document.querySelector('.red-1');
+const brown2 = document.querySelector('.red-2');
+const brown3 = document.querySelector('.red-3');
+
 const cardFull = document.querySelector('.card-full');
 
 let nowCard = null;
+
+
 
 const buttonChange = document.querySelector('.button-change');
 
@@ -34,6 +51,7 @@ export function changeButton(nameCard) {
     nameCard.classList.add('active');
 
     function popupDiff() {
+        ancientLogic(nameCard);
         changeAnc12.style.display = 'none';
         changeAnc13.style.display = 'none';
         changeAnc14.style.display = 'none';
@@ -74,11 +92,12 @@ function changeDiff(difficult) {
     diff4.classList.remove('diff-active');
     difficult.classList.add('diff-active');
     buttonChange.style.visibility = 'visible';
-    buttonChange.style.height = '130px';
+    buttonChange.style.height = '110px';
     buttonChange.style.fontSize = '40px';
     buttonChange.textContent = 'Замешать колоду';
 
     function popupCard() {
+        diffLogic(difficult);
         diffCont.style.display = 'none';
         buttonChange.style.visibility = 'hidden';
         buttonChange.style.height = '80px';
@@ -110,9 +129,6 @@ if (cardFull.classList.contains('card-reverse') === true) {
     cardFull.classList.remove('card-reverse');
 }
 
-let color = 'blue';
-let num = 4;
-
 
 function notCard() {
     hText.textContent = "Игра завершена!";
@@ -130,14 +146,34 @@ function notCard() {
     });
 }
 
-
 function newCard() {
-        cardFull.style.backgroundImage = `url(./assets/MythicCards/${color}/${color}${num}.png)`;
-        num += 1;
-        nowCard = cardFull.style.backgroundImage;
-        if (num > 12) {
-            notCard();
-        }
+    cardFull.style.backgroundImage = fullStackArr[0];
+    nowCard = cardFull.style.backgroundImage;
+    fullStackArr.shift();
+
+    if (Number(green1.textContent) > 0) {
+        green1.textContent -= 1;
+    } else if (Number(brown1.textContent) > 0) {
+        brown1.textContent -= 1;
+    } else if (Number(blue1.textContent) > 0) {
+        blue1.textContent -= 1;
+    } else if (Number(green2.textContent) > 0) {
+        green2.textContent -= 1;
+    } else if (Number(brown2.textContent) > 0) {
+        brown2.textContent -= 1;
+    } else if (Number(blue2.textContent) > 0) {
+        blue2.textContent -= 1;
+    } else if (Number(green3.textContent) > 0) {
+        green3.textContent -= 1;
+    } else if (Number(brown3.textContent) > 0) {
+        brown3.textContent -= 1;
+    } else if (Number(blue3.textContent) > 0) {
+        blue3.textContent -= 1;
+    }
+
+    if (fullStackArr.length === 0) {
+        notCard();
+    }
 }
 
 
