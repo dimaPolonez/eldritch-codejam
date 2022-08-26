@@ -13,6 +13,7 @@ body {
 
 .wrapper {
     max-width: 1980px; 
+    min-height: 120vh;
     min-height: 100vh;
     margin: 0 auto;
     display: flex;
@@ -130,6 +131,7 @@ body {
     visibility: visible;
     width: 300px;
     height: 100px;
+    margin-bottom: 30px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 2px 3px rgba(13, 96, 111, 0.16);
     background-color: #fff;
     opacity: 0.6;

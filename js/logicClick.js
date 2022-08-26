@@ -131,22 +131,30 @@ if (cardFull.classList.contains('card-reverse') === true) {
 
 
 function notCard() {
+    buttonChange.style.visibility = 'hidden';
     hText.textContent = "Игра завершена!";
     hText.style.marginTop = '350px';
     ancCont.display = 'none';
     cardCont.style.display = 'none';
+    setTimeout(function () {
+        location.reload();
+    }, 1500);
+    
+}
+
+function newCard() {
+
     buttonChange.style.visibility = 'visible';
     buttonChange.style.height = '80px';
     buttonChange.textContent = 'Играть ещё раз';
     buttonChange.addEventListener('click', () => {
-        hText.textContent = "Игра завершена!";
-        setTimeout(function () {
-            location.reload();
-        }, 100);
+        notCard();
     });
-}
 
-function newCard() {
+    if (fullStackArr.length === 0) {
+        notCard();
+    }
+
     cardFull.style.backgroundImage = fullStackArr[0];
     nowCard = cardFull.style.backgroundImage;
     fullStackArr.shift();
@@ -170,10 +178,6 @@ function newCard() {
     } else if (Number(blue3.textContent) > 0) {
         blue3.textContent -= 1;
     }
-
-    if (fullStackArr.length === 0) {
-        notCard();
-    }
 }
 
 
@@ -187,3 +191,4 @@ window.addEventListener('mouseover', function (event) {
         cardFull.style.backgroundImage = nowCard;
     }
 });
+

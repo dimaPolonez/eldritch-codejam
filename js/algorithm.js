@@ -76,8 +76,6 @@ function randomStack() {
     function getRandom(numberMax) {
         return Math.random() * (numberMax - 1) + 1;
     }
-
-    console.log(greenArr, brownArr, blueArr);
 }
 
 export function fullStack() {
@@ -138,8 +136,8 @@ export function fullStack() {
             fullStackArr.push(`url(./assets/MythicCards/green/green${greenArr.pop(greenArr[i])}.png)`);
         }
     }
+    fullStackArr.reverse();
 
-    console.log(fullStackArr);
 }
 
 export function diffLogic(diff) {
