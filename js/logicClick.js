@@ -1,6 +1,11 @@
 import { ancientLogic } from "./algorithm.js";
 import { diffLogic } from "./algorithm.js";
 import { fullStackArr } from "./algorithm.js";
+import { greenArrCon } from "./algorithm.js";
+import { brownArrCon } from "./algorithm.js";
+import { blueArrCon } from "./algorithm.js";
+
+
 
 
 const changeAnc12 = document.querySelector('.ancient-Cthulthu');
@@ -31,7 +36,13 @@ const brown3 = document.querySelector('.red-3');
 
 const cardFull = document.querySelector('.card-full');
 
+const cardH1 = document.querySelector('.card-h-1').style;
+const cardH2 = document.querySelector('.card-h-2').style;
+const cardH3 = document.querySelector('.card-h-3').style;
+
+
 let nowCard = null;
+
 
 
 
@@ -157,26 +168,44 @@ function newCard() {
 
     cardFull.style.backgroundImage = fullStackArr[0];
     nowCard = cardFull.style.backgroundImage;
+
+    if ((Number(green1.textContent) > 0) && (greenArrCon.includes(fullStackArr[0]) === true)) {
+        green1.textContent -= 1;
+    } else if ((Number(brown1.textContent) > 0) && (brownArrCon.includes(fullStackArr[0]) === true)) {
+        brown1.textContent -= 1;
+    } else if ((Number(blue1.textContent) > 0) && (blueArrCon.includes(fullStackArr[0]) === true)) {
+        blue1.textContent -= 1;
+    } else if ((Number(green2.textContent) > 0) && (greenArrCon.includes(fullStackArr[0]) === true)) {
+        cardH1.opacity = "0.6";
+        cardH1.color = "gray";
+        green2.textContent -= 1;
+    } else if ((Number(brown2.textContent) > 0) && (brownArrCon.includes(fullStackArr[0]) === true)) {
+        cardH1.opacity = "0.6";
+        cardH1.color = "gray";
+        brown2.textContent -= 1;
+    } else if ((Number(blue2.textContent) > 0) && (blueArrCon.includes(fullStackArr[0]) === true)) {
+        cardH1.opacity = "0.6";
+        cardH1.color = "gray";
+        blue2.textContent -= 1;
+    } else if ((Number(green3.textContent) > 0) && (greenArrCon.includes(fullStackArr[0]) === true)) {
+        cardH2.opacity = "0.6";
+        cardH2.color = "gray";
+        green3.textContent -= 1;
+    } else if ((Number(brown3.textContent) > 0)  && (brownArrCon.includes(fullStackArr[0]) === true)) {
+        cardH2.opacity = "0.6";
+        cardH2.color = "gray";
+        brown3.textContent -= 1;
+    } else if ((Number(blue3.textContent) > 0) && (blueArrCon.includes(fullStackArr[0]) === true)) {
+        cardH2.opacity = "0.6";
+        cardH2.color = "gray";
+        blue3.textContent -= 1;
+    }
+
     fullStackArr.shift();
 
-    if (Number(green1.textContent) > 0) {
-        green1.textContent -= 1;
-    } else if (Number(brown1.textContent) > 0) {
-        brown1.textContent -= 1;
-    } else if (Number(blue1.textContent) > 0) {
-        blue1.textContent -= 1;
-    } else if (Number(green2.textContent) > 0) {
-        green2.textContent -= 1;
-    } else if (Number(brown2.textContent) > 0) {
-        brown2.textContent -= 1;
-    } else if (Number(blue2.textContent) > 0) {
-        blue2.textContent -= 1;
-    } else if (Number(green3.textContent) > 0) {
-        green3.textContent -= 1;
-    } else if (Number(brown3.textContent) > 0) {
-        brown3.textContent -= 1;
-    } else if (Number(blue3.textContent) > 0) {
-        blue3.textContent -= 1;
+    if ((Number(brown3.textContent) === 0) && (Number(blue3.textContent) === 0)) {
+        cardH3.opacity = "0.6";
+        cardH3.color = "gray";
     }
 }
 
